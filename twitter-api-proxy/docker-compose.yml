@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  twitter-api-proxy:
+    container_name: "twitter-api-proxy"
+    image: videah/twitter-api-proxy:latest
+    environment:
+      - FLASK_ENV=production
+      - TWITTER_BEARER_TOKEN
+    networks:
+      - caddy
+    labels:
+      caddy: twitter.videah.net
+      caddy.reverse_proxy: "{{upstreams 80}}"
+
+networks:
+  caddy:
+    external: true
