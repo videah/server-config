@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  videah_net:
+    container_name: "videah_net_new"
+    image: videah/videah-net:latest
+    networks:
+      - caddy
+    labels:
+      caddy: videah.net
+      caddy.reverse_proxy: "{{upstreams 80}}"
+      caddy.0_redir: "/references https://drive.google.com/drive/folders/10I6R0cEXrkvfxuBDgHhVSymMe7Di4gZo"
+      caddy.1_redir: "/test https://gogle.com"
+
+networks:
+  caddy:
+    external: true
