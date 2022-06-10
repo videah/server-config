@@ -11,6 +11,7 @@ services:
     labels:
       caddy: twitter.videah.net
       caddy.reverse_proxy: "{{upstreams 80}}"
+      com.centurylinklabs.watchtower.enable: true
 
 networks:
   caddy:

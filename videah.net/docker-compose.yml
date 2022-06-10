@@ -13,6 +13,7 @@ services:
       # We do both ways here because I can legit never remember which order it is
       caddy.1_redir: "/dad-references ${VIDEAH_DAD_REFERENCES_URL}"
       caddy.2_redir: "/references-dad ${VIDEAH_DAD_REFERENCES_URL}"
+      com.centurylinklabs.watchtower.enable: true
 
 networks:
   caddy:
