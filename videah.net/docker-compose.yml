@@ -8,8 +8,11 @@ services:
     labels:
       caddy: videah.net
       caddy.reverse_proxy: "{{upstreams 80}}"
-      caddy.0_redir: "/references https://drive.google.com/drive/folders/10I6R0cEXrkvfxuBDgHhVSymMe7Di4gZo"
-      caddy.1_redir: "/test https://gogle.com"
+      # Redirect to my fursona's references, useful for commissioning art
+      caddy.0_redir: "/references ${VIDEAH_REFERENCES_URL}"
+      # We do both ways here because I can legit never remember which order it is
+      caddy.1_redir: "/dad-references ${VIDEAH_DAD_REFERENCES_URL}"
+      caddy.2_redir: "/references-dad ${VIDEAH_DAD_REFERENCES_URL}"
 
 networks:
   caddy:
