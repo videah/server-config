@@ -3,6 +3,8 @@ services:
   videah_net:
     container_name: "videah-net"
     image: videah/videah-net:latest
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - caddy
     labels:
