@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  goatcounter:
+    container_name: "analytics"
+    image: ghcr.io/toozej/docker-goatcounter:v2.2
+    environment:
+      - GOATCOUNTER_DOMAIN=stats.videah.net
+      - GOATCOUNTER_EMAIL
+      - GOATCOUNTER_PASSWORD
+    networks:
+      - caddy
+    volumes:
+      - analytics_data:/goatcounter/db
+    labels:
+      caddy: stats.videah.net
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+
+networks:
+  caddy:
+    external: true
+
+volumes:
+  analytics_data: {}
