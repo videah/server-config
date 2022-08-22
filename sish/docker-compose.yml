@@ -12,7 +12,7 @@ services:
       - caddy
     labels:
       caddy: "tun.videah.net"
-      caddy.respond: "what are u doing here :3"
+      caddy.respond: '"what are u doing here :3"'
       caddy_0: "*.tun.videah.net"
       caddy_0.reverse_proxy: "{{upstreams 80}}"
       caddy_0.tls.dns: namecheap
