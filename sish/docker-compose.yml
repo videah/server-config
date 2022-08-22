@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  sish:
+    container_name: "sish"
+    image: antoniomika/sish:latest
+    ports:
+      - "3621:3621"
+    volumes:
+      - keys:/keys
+      - ~/.ssh:/pubkeys:ro
+    networks:
+      - caddy
+    labels:
+      caddy: "tun.videah.net"
+      caddy.respond: "what are u doing here :3"
+      caddy_0: "*.tun.videah.net"
+      caddy_0.reverse_proxy: "{{upstreams 80}}"
+      caddy_0.tls.dns: namecheap
+      caddy_0.tls.dns.user: "${NAMECHEAP_API_USER}"
+      caddy_0.tls.dns.api_key: "${NAMECHEAP_API_KEY}"
+    command: |
+      --ssh-address=:3621
+      --http-address=:80
+      --https=false
+      --authentication-keys-directory=/pubkeys
+      --private-keys-directory=/keys
+      --bind-random-ports=false
+      --bind-random-subdomains=false
+      --cleanup-unbound=true
+      --domain=tun.videah.net
+
+networks:
+  caddy:
+    external: true
+
+volumes:
+  keys: {}
