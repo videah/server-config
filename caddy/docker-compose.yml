@@ -16,9 +16,6 @@ services:
     restart: unless-stopped
     labels:
       caddy.email: "videah@selfish.systems"
-      caddy.tls.dns: namecheap
-      caddy.tls.dns.user: "${NAMECHEAP_API_USER}"
-      caddy.tls.dns.api_key: "${NAMECHEAP_API_KEY}"
       com.centurylinklabs.watchtower.enable: true
 
 networks:
