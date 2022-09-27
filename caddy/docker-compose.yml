@@ -6,6 +6,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "443:443/udp"
     environment:
       - CADDY_INGRESS_NETWORKS=caddy
     networks:
@@ -16,6 +17,7 @@ services:
     restart: unless-stopped
     labels:
       caddy.email: "videah@selfish.systems"
+      caddy.encode: zstd gzip
       com.centurylinklabs.watchtower.enable: true
 
 networks:
