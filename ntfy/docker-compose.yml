@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  ntfy:
+    container_name: "ntfy"
+    image: binwiederhier/ntfy:latest
+    volumes:
+      - cache:/var/cache/ntfy
+      - data:/var/lib/ntfy
+      - ./server.yml:/etc/ntfy/server.yml
+    networks:
+      - caddy
+    restart: unless-stopped
+    command:
+      - serve
+    labels:
+      caddy: ntfy.videah.net
+      caddy.reverse_proxy: "{{upstreams 80}}"
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  caddy:
+    external: true
+
+volumes:
+  cache: {}
+  data: {}

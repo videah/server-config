@@ -1,0 +1,9 @@
+base-url: "https://ntfy.videah.net"
+cache-file: "/var/cache/ntfy/cache.db"
+attachment-cache-dir: "/var/cache/ntfy/attachments"
+cache-duration: "48h"
+auth-file: "/var/lib/ntfy/user.db"
+auth-default-access: "deny-all"
+behind-proxy: true
+upstream-base-url: "https://ntfy.sh"
+web-root: "disable"
