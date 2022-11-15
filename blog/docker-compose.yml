@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  blog:
+    container_name: "blog"
+    image: videah/blog:latest
+    networks:
+      - caddy
+    labels:
+      caddy: blog.videah.net
+      caddy.reverse_proxy: "{{upstreams 80}}"
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  caddy:
+    external: true
